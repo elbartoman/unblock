@@ -1,4 +1,4 @@
-
+//https://neunzehn83.de/blog/2016/07/01/verschleierung-von-spiegel-plus-unter-der-lupe.html
 
 // Verschwommen-Filter entfernen
 document.getElementsByClassName('obfuscated-content')[0].parentElement.className='';
