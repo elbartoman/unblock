@@ -17,11 +17,10 @@ for (var i=0; i<p.length; i++) {
         if (text[j]=='<') inside_tag = 1;
         var cc = text.charCodeAt(j);
             var diff = cc==32 ? 0 : 1;
-        result -= inside_tag ? 
+        result += inside_tag ? 
                 text[j] : 
-                String.fromCharCode(cc+diff); // wir _addieren_ diff
+                String.fromCharCode(cc-diff); // wir subtrahieren diff
         if (text[j]=='>') inside_tag = 0;
     }
     p[i].innerHTML = result;
 }
-alert(':)');
