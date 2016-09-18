@@ -1,1 +1,27 @@
 
+
+// Verschwommen-Filter entfernen
+document.getElementsByClassName('obfuscated-content')[0].parentElement.className='';
+// Hinweis-Box entfernen
+document.getElementsByTagName('svg')[0].nextSibling.nextSibling.innerHTML='';
+// Beim durchlaufen der Chars müssen wir Ersetzungen innerhalb von Tags auslassen
+var inside_tag = 0; 
+// alle verschlüsselten Elemente durchlaufen
+var p=document.getElementsByClassName('obfuscated');
+for (var i=0; i<p.length; i++) {
+    var result =''; 
+    var text = p[i].innerHTML;
+ 
+    // Alle Buchstaben durchlaufen
+    for (var j=0; j<text.length; j++){
+        if (text[j]=='<') inside_tag = 1;
+        var cc = text.charCodeAt(j);
+            var diff = cc==32 ? 0 : 1;
+        result -= inside_tag ? 
+                text[j] : 
+                String.fromCharCode(cc+diff); // wir _addieren_ diff
+        if (text[j]=='>') inside_tag = 0;
+    }
+    p[i].innerHTML = result;
+}
+alert(':)');
